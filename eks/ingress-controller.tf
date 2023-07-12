@@ -3,7 +3,7 @@ resource "kubectl_manifest" "ingress-controller-manifest" {
   count = length(data.kubectl_file_documents.ingress-controller.documents)
   depends_on = [
     aws_eks_node_group.private-node-group,
-    # aws_eks_node_group.public-node-group
+    kubernetes_namespace_v1.ingress-nginx
   ]
 }
 
