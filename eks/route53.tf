@@ -18,7 +18,8 @@ resource "kubernetes_namespace_v1" "ingress-nginx" {
     aws_eks_addon.aws-ebs-csi-driver,
     aws_eks_addon.coreDns,
     aws_eks_addon.kube-proxy,
-    aws_eks_addon.vpc-cni
+    aws_eks_addon.vpc-cni,
+    data.aws_eks_cluster_auth.token
     ]
 }
 resource "aws_route53_record" "records" {
