@@ -13,6 +13,13 @@ resource "kubernetes_namespace_v1" "ingress-nginx" {
     }
     name = "ingress-nginx"
   }
+  depends_on = [ 
+    aws_eks_node_group.private-node-group,
+    aws_eks_addon.aws-ebs-csi-driver,
+    aws_eks_addon.coreDns,
+    aws_eks_addon.kube-proxy,
+    aws_eks_addon.vpc-cni
+    ]
 }
 resource "aws_route53_record" "records" {
   count = length(var.project_domains)
