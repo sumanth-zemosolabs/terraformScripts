@@ -25,3 +25,7 @@ output "ingress-nginx-controller-service" {
 output "test" {
   value = local.loadbalancer_dns_name
 }
+
+output "ast" {
+  value = aws_eks_node_group.private-node-group.resources.0.autoscaling_groups.0.name
+}

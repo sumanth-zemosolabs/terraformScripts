@@ -37,3 +37,19 @@ variable "project_domains" {
   description = "list of all subdomains required for this bootcamp"
   type = list(string)
 }
+
+variable "asg-ports" {
+  type = list(object({
+    name = string
+    port = number
+    nodePort = number
+  }))
+  description = "list of all ports for which a listener will be created for the load balancer"
+  default = [
+    {
+      name = "database"
+      port = 3306
+      nodePort = 30001
+    }
+  ]
+}
